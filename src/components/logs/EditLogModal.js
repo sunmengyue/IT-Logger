@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { connect } from 'react-redux';
+import { editLog } from '../../actions/logActions';
+import PropTypes from 'prop-types';
 
 const EditLogModal = () => {
   const [message, setMessage] = useState('');
@@ -10,8 +13,13 @@ const EditLogModal = () => {
     if (message === '' || tech === '') {
       M.toast({ html: 'Please enter a message and tech' });
     } else {
-      console.log(message, attention, tech);
-
+      const edittedLog = {
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+      editLog(edittedLog);
       // Clear Fields
       setMessage('');
       setTech('');
@@ -93,4 +101,4 @@ const modalStyle = {
   height: '75%',
 };
 
-export default EditLogModal;
+export default connect(null, { editLog })(EditLogModal);
