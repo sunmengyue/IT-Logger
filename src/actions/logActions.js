@@ -7,6 +7,7 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
+  SEARCH_LOGS,
 } from './types';
 
 // export const getLogs = () => {
@@ -23,7 +24,6 @@ import {
 // };
 
 //Get Logs from server
-
 export const getLogs = () => async (dispatch) => {
   try {
     setLoading();
@@ -43,8 +43,29 @@ export const getLogs = () => async (dispatch) => {
   }
 };
 
+// set loading
 export const setLoading = () => {
   return { type: SET_LOADING };
+};
+
+// Search Logs
+export const searchLogs = (text) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const res = await fetch(`/logs?q=${text}`);
+    const data = await res.json();
+
+    dispatch({
+      type: SEARCH_LOGS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.response.data,
+    });
+  }
 };
 
 // Add log
