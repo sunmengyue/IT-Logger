@@ -31,7 +31,6 @@ const mapStateToProps = (state) => ({
 TechListModal.propTypes = {
   techs: PropTypes.object.isRequired,
   getTechs: PropTypes.func.isRequired,
-  setLoading: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, { getTechs })(TechListModal);

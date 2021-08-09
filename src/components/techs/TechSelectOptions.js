@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTechs } from '../../actions/techActions';
 
-const TechSelectOptions = () => {
-  const techs = useSelector((state) => state.tech);
-  const dispatch = useDispatch();
-
+const TechSelectOptions = ({ getTechs, tech: { techs } }) => {
   useEffect(() => {
-    dispatch(getTechs());
+    getTechs();
   }, []);
 
-  return techs.map((t) => (
-    <option key={t.id} value={`${t.firstName} ${t.lasgName}`}>
-      {t.firstName}
-      {t.lastName}
-    </option>
-  ));
+  return (
+    <>
+      {techs?.map((t) => (
+        <option key={t.id} value={`${t.firstName} ${t.lasgName}`}>
+          {t.firstName}
+          {t.lastName}
+        </option>
+      ))}{' '}
+    </>
+  );
 };
 
 TechSelectOptions.propTypes = {
@@ -24,4 +25,8 @@ TechSelectOptions.propTypes = {
   tech: PropTypes.object.isRequired,
 };
 
-export default TechSelectOptions;
+const mapStateToProps = (state) => ({
+  tech: state.tech,
+});
+
+export default connect(mapStateToProps, { getTechs })(TechSelectOptions);

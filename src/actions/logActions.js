@@ -134,7 +134,7 @@ export const editLog = (log) => async (dispatch) => {
 // Delete log from server
 export const deleteLog = (id) => async (dispatch) => {
   try {
-    const res = fetch(`/logs/${id}`, {
+    await fetch(`/logs/${id}`, {
       method: 'DELETE',
     });
     dispatch({
