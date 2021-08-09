@@ -17,34 +17,19 @@
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe"
+      "firstName": "William",
+      "lastName": "Shakespear",
+      "id": 1
     },
     {
-      "id": 2,
-      "firstName": "Sam",
-      "lastName": "Smith"
+      "firstName": "Oska",
+      "lastName": "Wild",
+      "id": 2
     },
     {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
-    },
-    {
-      "firstName": "Simon",
-      "lastName": "Lee",
-      "id": 4
-    },
-    {
-      "firstName": "Simon",
-      "lastName": "Sun",
-      "id": 5
-    },
-    {
-      "firstName": "Caesar",
-      "lastName": "William",
-      "id": 6
+      "firstName": "Julliet",
+      "lastName": "Romio",
+      "id": 3
     }
   ]
 }
