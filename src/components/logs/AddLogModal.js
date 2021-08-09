@@ -36,7 +36,6 @@ const AddLogModal = ({ addLog }) => {
         <div className="row">
           <div className="input-field">
             <input
-              id="message"
               type="text"
               name="message"
               value={message}

@@ -6,7 +6,14 @@ import {
   SET_LOADING,
 } from './types';
 
+const setLoading = () => {
+  return {
+    type: SET_LOADING,
+  };
+};
+
 export const getTechs = () => async (dispatch) => {
+  setLoading();
   try {
     const res = await fetch('/techs');
     const data = await res.json();
@@ -22,19 +29,14 @@ export const getTechs = () => async (dispatch) => {
   }
 };
 
-const setLoading = () => {
-  return {
-    type: SET_LOADING,
-  };
-};
-
 export const addTech = (tech) => async (dispatch) => {
+  setLoading();
   try {
     const res = await fetch('/techs', {
       method: 'POST',
       body: JSON.stringify(tech),
       headers: {
-        'Content-Type': 'json/application',
+        'Content-Type': 'application/json',
       },
     });
     const data = await res.json();

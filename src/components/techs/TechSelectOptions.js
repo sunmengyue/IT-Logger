@@ -3,19 +3,20 @@ import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTechs } from '../../actions/techActions';
 
-const TechSelectOptions = ({ getTechs, tech: { techs } }) => {
+const TechSelectOptions = ({ getTechs, tech: { techs, loading } }) => {
   useEffect(() => {
     getTechs();
   }, []);
 
   return (
     <>
-      {techs?.map((t) => (
-        <option key={t.id} value={`${t.firstName} ${t.lasgName}`}>
-          {t.firstName}
-          {t.lastName}
-        </option>
-      ))}{' '}
+      {!loading &&
+        techs?.map((t) => (
+          <option key={t.id} value={`${t.firstName} ${t.lasgName}`}>
+            {t.firstName}
+            {t.lastName}
+          </option>
+        ))}{' '}
     </>
   );
 };
